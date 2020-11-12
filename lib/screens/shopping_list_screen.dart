@@ -85,9 +85,10 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                     list.isEmpty
                         ? Center(
                             child: Text(
-                              "Your Shopping List is Empty.",
+                              "Shopping List is Empty.",
                               style: TextStyle(
                                 fontSize: 18,
+                                color: Colors.grey,
                               ),
                             ),
                           )

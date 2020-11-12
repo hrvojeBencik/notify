@@ -39,13 +39,10 @@ class _AddItemState extends State<AddItem> {
                   textAlignVertical: TextAlignVertical.center,
                   textCapitalization: TextCapitalization.sentences,
                   autocorrect: false,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white70,
-                    contentPadding: EdgeInsets.only(top: 30, left: 20),
+                    fillColor: Theme.of(context).canvasColor,
+                    contentPadding: EdgeInsets.only(top: 32, left: 20),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(100),
                       borderSide: BorderSide(

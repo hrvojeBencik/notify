@@ -76,9 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   _toDoList.isEmpty
                       ? Center(
                           child: Text(
-                            "Your To-Do List is Empty",
+                            "To-Do List is Empty",
                             style: TextStyle(
                               fontSize: 18,
+                              color: Colors.grey,
                             ),
                           ),
                         )
