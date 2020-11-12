@@ -17,12 +17,20 @@ class CustomListTile extends StatelessWidget {
       },
       background: Container(
         alignment: Alignment.centerRight,
+        margin: EdgeInsets.only(
+          right: 10,
+          top: 10,
+          bottom: 10,
+        ),
         padding: EdgeInsets.only(
           right: 10,
         ),
         decoration: BoxDecoration(
           color: Colors.green,
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(100),
+            topRight: Radius.circular(100),
+          ),
         ),
         child: Icon(
           Icons.done,
@@ -31,12 +39,14 @@ class CustomListTile extends StatelessWidget {
         ),
       ),
       direction: DismissDirection.endToStart,
-      child: ListTile(
-        title: Text(
-          (index + 1).toString() + '. ' + title,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+      child: Container(
+        margin: EdgeInsets.all(10),
+        child: ListTile(
+          title: Text(
+            (index + 1).toString() + '. ' + title,
+            style: TextStyle(
+              fontSize: 20,
+            ),
           ),
         ),
       ),

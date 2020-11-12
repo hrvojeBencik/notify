@@ -29,7 +29,7 @@ class ShoppingList with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> fetchList() async {
+  void fetchList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _shoppingList = prefs.getStringList('shoppingList');
     notifyListeners();

@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shopping_list/models/shopping_list_model.dart';
-import 'package:shopping_list/widgets/custom_list_tile.dart';
+import 'package:shopping_list/models/todo_list_model.dart';
+import 'package:shopping_list/widgets/add_item.dart';
+import 'package:shopping_list/widgets/custom_drawer.dart';
+import 'package:shopping_list/widgets/todo_list_tile.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeName = '/home';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Size size;
+  var _toDoListProvider;
+  List<Map<String, dynamic>> _toDoList;
+
   TextEditingController _itemController = TextEditingController();
-  var shoppingListProvider;
-  List<String> list;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    checkForSavedList();
+    checkForSavedToDoList();
   }
 
   @override
@@ -27,157 +31,86 @@ class _HomeScreenState extends State<HomeScreen> {
     _itemController.dispose();
   }
 
-  void checkForSavedList() async {
+  void checkForSavedToDoList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.getStringList('shoppingList') == null ||
-        prefs.getStringList('shoppingList').isEmpty) {
-      print('List is empty!');
-    } else {
-      print('List is not empty!');
-      setState(() {
-        shoppingListProvider.fetchList();
-      });
+    if (prefs.getStringList('toDoList') != null &&
+        prefs.getStringList('toDoList').isNotEmpty) {
+      await _toDoListProvider.fetchList();
     }
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
-    shoppingListProvider = Provider.of<ShoppingList>(context, listen: true);
-    list = shoppingListProvider.list;
+    _toDoListProvider = Provider.of<ToDoList>(context, listen: true);
+    _toDoList = _toDoListProvider.todoList;
     return Scaffold(
+      drawer: CustomDrawer(),
       appBar: AppBar(
         title: Text(
-          "Shopping List",
+          "To-Do",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.undo_rounded,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              shoppingListProvider.removeAllItems();
-              shoppingListProvider.saveList();
-            },
-            icon: Icon(
-              Icons.delete_forever,
-            ),
-          ),
+              icon: Icon(Icons.delete_forever),
+              onPressed: _toDoList.isEmpty
+                  ? null
+                  : () {
+                      _toDoListProvider.removeAllToDoItems();
+                      _toDoListProvider.removeListFromMemory();
+                    }),
         ],
       ),
       body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(10),
-          width: size.width,
-          height: size.height,
-          child: Stack(
-            children: [
-              list.isEmpty
-                  ? Center(
-                      child: Text(
-                        "Your shopping list is empty.",
-                        style: TextStyle(
-                          fontSize: 18,
+        child: _isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Stack(
+                children: [
+                  _toDoList.isEmpty
+                      ? Center(
+                          child: Text(
+                            "Your To-Do List is Empty",
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.only(
+                            top: 10,
+                            right: 10,
+                            left: 10,
+                          ),
+                          child: ListView.builder(
+                              itemCount: _toDoList.length,
+                              itemBuilder: (context, i) {
+                                return ToDoListTile(_toDoList[i]['text'],
+                                    _toDoList[i]['isDone'], i);
+                              }),
                         ),
-                      ),
-                    )
-                  : ListView.builder(
-                      itemCount: list.length,
-                      itemBuilder: (context, index) {
-                        return CustomListTile(list[index], index);
-                      },
-                    ),
-              _addItem(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _addItem() {
-    return Positioned(
-      bottom: 0,
-      child: Container(
-        width: size.width - 20,
-        height: 60,
-        child: Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  right: 16.0,
-                  top: 5,
-                  bottom: 5,
-                ),
-                child: TextField(
-                  controller: _itemController,
-                  textAlignVertical: TextAlignVertical.center,
-                  textCapitalization: TextCapitalization.words,
-                  autocorrect: false,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white70,
-                    contentPadding: EdgeInsets.only(top: 30, left: 20),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(100),
-                      borderSide: BorderSide(
-                        width: 2,
-                        style: BorderStyle.solid,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(100),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Colors.amber,
-              ),
-              child: IconButton(
-                iconSize: 30,
-                icon: Icon(
-                  Icons.add,
-                  size: 30,
-                  color: Colors.black,
-                ),
-                onPressed: () {
-                  setState(
-                    () {
+                  AddItem(
+                    HomeScreen.routeName,
+                    (_itemController) {
                       if (_itemController.text.isNotEmpty) {
-                        shoppingListProvider.addItem(_itemController.text);
-                        shoppingListProvider.saveList();
-
-                        _itemController.clear();
+                        _toDoListProvider.addToDoItem(_itemController.text);
+                        _toDoListProvider.saveToDoList();
+                        setState(
+                          () {
+                            _itemController.clear();
+                          },
+                        );
                       }
                     },
-                  );
-                },
+                  )
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
