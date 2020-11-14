@@ -4,6 +4,7 @@ import 'package:shopping_list/models/reminder_list_model.dart';
 import 'package:shopping_list/models/shopping_list_model.dart';
 import 'package:shopping_list/models/todo_list_model.dart';
 import 'package:shopping_list/screens/calendar_screen.dart';
+import 'package:shopping_list/screens/notes_screen.dart';
 import 'package:shopping_list/screens/shopping_list_screen.dart';
 
 import 'screens/home_screen.dart';
@@ -36,6 +37,7 @@ class ShoppingApp extends StatelessWidget {
           HomeScreen.routeName: (ctx) => HomeScreen(),
           ShoppingListScreen.routeName: (ctx) => ShoppingListScreen(),
           CalendarScreen.routeName: (ctx) => CalendarScreen(),
+          NotesScreen.routeName: (ctx) => NotesScreen(),
         },
       ),
     );

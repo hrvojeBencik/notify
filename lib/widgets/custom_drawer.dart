@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list/screens/calendar_screen.dart';
 import 'package:shopping_list/screens/home_screen.dart';
+import 'package:shopping_list/screens/notes_screen.dart';
 import 'package:shopping_list/screens/shopping_list_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -58,6 +59,22 @@ class CustomDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(ShoppingListScreen.routeName);
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.notes,
+              size: 28,
+            ),
+            title: Text(
+              "Notes",
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(NotesScreen.routeName);
             },
           ),
           Divider(),
