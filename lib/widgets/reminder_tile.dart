@@ -46,6 +46,8 @@ class _ReminderTileState extends State<ReminderTile> {
             widget.text,
             style: TextStyle(
               fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).primaryColor,
             ),
           ),
           subtitle: Row(
@@ -57,14 +59,18 @@ class _ReminderTileState extends State<ReminderTile> {
                 ),
                 style: TextStyle(
                   fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColor.withOpacity(0.7),
                 ),
               ),
               Text(
                 widget.time,
                 style: TextStyle(
                   fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColor.withOpacity(0.7),
                 ),
-              )
+              ),
             ],
           ),
         ),

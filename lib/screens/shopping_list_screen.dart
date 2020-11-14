@@ -88,7 +88,9 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                               "Shopping List is Empty.",
                               style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.grey,
+                                color: Theme.of(context)
+                                    .primaryColor
+                                    .withOpacity(0.8),
                               ),
                             ),
                           )

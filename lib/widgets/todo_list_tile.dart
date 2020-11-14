@@ -62,6 +62,7 @@ class _ToDoListTileState extends State<ToDoListTile> {
           child: Checkbox(
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             value: checkBoxValue,
+            activeColor: Theme.of(context).accentColor,
             onChanged: (value) {
               Provider.of<ToDoList>(context, listen: false)
                   .checkItem(widget.index);

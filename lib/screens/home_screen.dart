@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     super.dispose();
+    _itemController.clear();
     _itemController.dispose();
   }
 
@@ -79,7 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             "To-Do List is Empty",
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.grey,
+                              color: Theme.of(context)
+                                  .primaryColor
+                                  .withOpacity(0.8),
                             ),
                           ),
                         )

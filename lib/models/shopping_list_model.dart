@@ -30,9 +30,12 @@ class ShoppingList with ChangeNotifier {
   }
 
   void fetchList() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _shoppingList = prefs.getStringList('shoppingList');
-    notifyListeners();
+    if (_shoppingList.isEmpty) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      _shoppingList = prefs.getStringList('shoppingList');
+      print('fecthing');
+      notifyListeners();
+    }
   }
 
   void removeListFromMemory() async {

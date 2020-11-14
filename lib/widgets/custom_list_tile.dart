@@ -19,14 +19,14 @@ class CustomListTile extends StatelessWidget {
         alignment: Alignment.centerRight,
         margin: EdgeInsets.only(
           right: 10,
-          top: 10,
-          bottom: 10,
+          top: index == 0 ? 10 : 4,
+          bottom: 4,
         ),
         padding: EdgeInsets.only(
           right: 10,
         ),
         decoration: BoxDecoration(
-          color: Colors.green,
+          color: Theme.of(context).accentColor,
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(100),
             topRight: Radius.circular(100),
@@ -40,7 +40,12 @@ class CustomListTile extends StatelessWidget {
       ),
       direction: DismissDirection.endToStart,
       child: Container(
-        margin: EdgeInsets.all(10),
+        margin: EdgeInsets.only(
+          right: 10,
+          left: 10,
+          top: index == 0 ? 10 : 4,
+          bottom: 10,
+        ),
         child: ListTile(
           title: Text(
             (index + 1).toString() + '. ' + title,

@@ -70,7 +70,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     });
                   },
                 ),
-                Divider(),
+                Divider(
+                  color: Theme.of(context).primaryColor.withOpacity(0.1),
+                  thickness: 2,
+                  indent: 20,
+                  endIndent: 20,
+                ),
                 _isLoading
                     ? Center(
                         child: CircularProgressIndicator(),
@@ -93,8 +98,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             padding: const EdgeInsets.only(top: 20),
                             child: Text(
                               "You don't have any reminders",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.grey),
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Theme.of(context)
+                                    .primaryColor
+                                    .withOpacity(0.8),
+                              ),
                             ),
                           ),
               ],
@@ -150,15 +159,17 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             style: TextStyle(
                               fontSize: 18,
                             ),
-                            cursorColor: Colors.indigo,
+                            cursorColor: Theme.of(context).primaryColor,
                             decoration: InputDecoration(
                                 labelText: 'Add reminder',
                                 labelStyle: TextStyle(
-                                  color: Colors.grey,
+                                  color: Theme.of(context)
+                                      .primaryColor
+                                      .withOpacity(0.7),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.indigo,
+                                    color: Theme.of(context).primaryColor,
                                     width: 2,
                                   ),
                                 )),
@@ -169,7 +180,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: Colors.indigo,
+                            color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.circular(25),
                           ),
                           child: IconButton(

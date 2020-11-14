@@ -28,7 +28,8 @@ class ShoppingApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.amber,
+          primaryColor: Color(0xFF001026),
+          accentColor: Color(0xFF00D39B),
         ),
         initialRoute: '/home',
         routes: {

@@ -48,16 +48,18 @@ class ToDoList with ChangeNotifier {
   }
 
   void fetchList() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> tempList = prefs.getStringList('toDoList');
-    tempList.forEach((element) {
-      var tempData = json.decode(element);
-      _todoList.add({
-        'text': tempData['text'],
-        'isDone': tempData['isDone'],
+    if (_todoList.isEmpty) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      List<String> tempList = prefs.getStringList('toDoList');
+      tempList.forEach((element) {
+        var tempData = json.decode(element);
+        _todoList.add({
+          'text': tempData['text'],
+          'isDone': tempData['isDone'],
+        });
       });
-    });
-    notifyListeners();
+      notifyListeners();
+    }
   }
 
   void removeListFromMemory() async {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list/screens/home_screen.dart';
 import 'package:shopping_list/screens/shopping_list_screen.dart';
 
 class AddItem extends StatefulWidget {
@@ -21,7 +22,7 @@ class _AddItemState extends State<AddItem> {
       bottom: 0,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: 20,
+          horizontal: 30,
         ),
         width: size.width,
         height: 60,
@@ -30,32 +31,24 @@ class _AddItemState extends State<AddItem> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(
-                  right: 16.0,
-                  top: 5,
-                  bottom: 5,
+                  right: 30.0,
                 ),
                 child: TextField(
                   controller: _itemController,
-                  textAlignVertical: TextAlignVertical.center,
                   textCapitalization: TextCapitalization.sentences,
                   autocorrect: false,
+                  cursorColor: Theme.of(context).primaryColor,
                   decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Theme.of(context).canvasColor,
-                    contentPadding: EdgeInsets.only(top: 32, left: 20),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(100),
-                      borderSide: BorderSide(
-                        width: 1,
-                        style: BorderStyle.solid,
-                        color: Colors.grey,
-                      ),
+                    labelText: widget.screen == HomeScreen.routeName
+                        ? "Add Task"
+                        : "Add Item",
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).primaryColor.withOpacity(0.7),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(100),
+                    focusedBorder: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(4),
                       borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
+                        color: Theme.of(context).primaryColor,
                         style: BorderStyle.solid,
                       ),
                     ),
@@ -68,7 +61,7 @@ class _AddItemState extends State<AddItem> {
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
-                color: Colors.amber,
+                color: Theme.of(context).primaryColor,
               ),
               child: IconButton(
                 iconSize: 30,
@@ -77,7 +70,7 @@ class _AddItemState extends State<AddItem> {
                       ? Icons.add_shopping_cart_outlined
                       : Icons.add,
                   size: widget.screen == ShoppingListScreen.routeName ? 24 : 30,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 onPressed: () {
                   widget.callBack(_itemController);
