@@ -13,16 +13,16 @@ For the future I have few ideas and features that I would like to add. Also icon
 
 ### Screenshots
 #### To-Do List - Screen
-![image](https://user-images.githubusercontent.com/26110447/99146820-d0274700-267b-11eb-9ece-fba1a89587b2.png | width=200)
-![image](https://user-images.githubusercontent.com/26110447/99146821-d1587400-267b-11eb-8216-45496524fc34.png | width=200)
+![image](https://user-images.githubusercontent.com/26110447/99146820-d0274700-267b-11eb-9ece-fba1a89587b2.png =200x)
+![image](https://user-images.githubusercontent.com/26110447/99146821-d1587400-267b-11eb-8216-45496524fc34.png =200x)
 
 #### Shopping List - Screen
-![image](https://user-images.githubusercontent.com/26110447/99146852-314f1a80-267c-11eb-98b2-9d9a1377815b.png | width=200)
-![image](https://user-images.githubusercontent.com/26110447/99146853-32804780-267c-11eb-83be-f46d5c0db07a.png | width=200)
-![image](https://user-images.githubusercontent.com/26110447/99146855-33b17480-267c-11eb-9405-5686d2c40b77.png | width=200)
+![image](https://user-images.githubusercontent.com/26110447/99146852-314f1a80-267c-11eb-98b2-9d9a1377815b.png =200x)
+![image](https://user-images.githubusercontent.com/26110447/99146853-32804780-267c-11eb-83be-f46d5c0db07a.png =200x)
+![image](https://user-images.githubusercontent.com/26110447/99146855-33b17480-267c-11eb-9405-5686d2c40b77.png =200x)
 
 #### Reminders - Screen
-![image](https://user-images.githubusercontent.com/26110447/99146863-504dac80-267c-11eb-8d4d-70ee4ea58fae.png | width=200)
-![image](https://user-images.githubusercontent.com/26110447/99146864-517ed980-267c-11eb-93b4-6784b2a3ac9f.png | width=200)
-![image](https://user-images.githubusercontent.com/26110447/99146865-52177000-267c-11eb-9c00-1d0f5bc12125.png | width=200)
+![image](https://user-images.githubusercontent.com/26110447/99146863-504dac80-267c-11eb-8d4d-70ee4ea58fae.png =200x)
+![image](https://user-images.githubusercontent.com/26110447/99146864-517ed980-267c-11eb-93b4-6784b2a3ac9f.png =200x)
+![image](https://user-images.githubusercontent.com/26110447/99146865-52177000-267c-11eb-9c00-1d0f5bc12125.png =200x)
 
