@@ -21,11 +21,13 @@ class _AddItemState extends State<AddItem> {
     return Positioned(
       bottom: 0,
       child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 30,
+        padding: EdgeInsets.only(
+          right: 30,
+          left: 30,
+          bottom: 20,
         ),
         width: size.width,
-        height: 60,
+        height: 80,
         child: Row(
           children: [
             Expanded(

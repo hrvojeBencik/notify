@@ -59,17 +59,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
           children: [
             Column(
               children: [
-                CalendarDatePicker(
-                  initialDate: _selectedDate,
-                  currentDate: DateTime.now(),
-                  lastDate: DateTime(2101),
-                  firstDate: DateTime.now(),
-                  onDateChanged: (value) {
-                    setState(() {
-                      _selectedDate = value;
-                    });
-                  },
-                ),
+                _buildCalendarDatePicker(),
                 Divider(
                   color: Theme.of(context).primaryColor.withOpacity(0.1),
                   thickness: 2,
@@ -221,6 +211,20 @@ class _CalendarScreenState extends State<CalendarScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildCalendarDatePicker() {
+    return CalendarDatePicker(
+      initialDate: _selectedDate,
+      currentDate: DateTime.now(),
+      lastDate: DateTime(2101),
+      firstDate: DateTime.now(),
+      onDateChanged: (value) {
+        setState(() {
+          _selectedDate = value;
+        });
+      },
     );
   }
 }
