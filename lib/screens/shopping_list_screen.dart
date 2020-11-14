@@ -66,6 +66,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                     shoppingListProvider.removeListFromMemory();
                     shoppingListProvider.saveList();
                   },
+            disabledColor: Colors.white.withOpacity(0.4),
             icon: Icon(
               Icons.delete_forever,
             ),

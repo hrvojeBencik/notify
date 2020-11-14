@@ -10,26 +10,51 @@ class CustomDrawer extends StatelessWidget {
       child: Column(
         children: [
           AppBar(
+            leading: IconButton(
+              icon: Icon(
+                Icons.close,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
             title: Text(
               "All In One",
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.check),
-            title: Text("To-Do List"),
+            leading: Icon(
+              Icons.check,
+              size: 28,
+            ),
+            title: Text(
+              "To-Do List",
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
             },
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.local_grocery_store),
-            title: Text("Shopping List"),
+            leading: Icon(
+              Icons.local_grocery_store,
+              size: 28,
+            ),
+            title: Text(
+              "Shopping List",
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(ShoppingListScreen.routeName);
@@ -37,8 +62,16 @@ class CustomDrawer extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.calendar_today),
-            title: Text("Calendar"),
+            leading: Icon(
+              Icons.calendar_today,
+              size: 28,
+            ),
+            title: Text(
+              "Calendar",
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(CalendarScreen.routeName);

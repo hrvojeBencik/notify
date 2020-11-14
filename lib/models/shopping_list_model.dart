@@ -33,7 +33,6 @@ class ShoppingList with ChangeNotifier {
     if (_shoppingList.isEmpty) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       _shoppingList = prefs.getStringList('shoppingList');
-      print('fecthing');
       notifyListeners();
     }
   }

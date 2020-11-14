@@ -21,7 +21,7 @@ class _ReminderTileState extends State<ReminderTile> {
       padding: EdgeInsets.only(
           bottom: Provider.of<ReminderList>(context).reminderList.length - 1 ==
                   widget.index
-              ? 80
+              ? 110
               : 0),
       child: Dismissible(
         key: UniqueKey(),

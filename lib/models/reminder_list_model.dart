@@ -50,17 +50,19 @@ class ReminderList with ChangeNotifier {
   }
 
   void fetchReminderList() async {
-    final prefs = await SharedPreferences.getInstance();
-    List<String> tempList = prefs.getStringList('reminderList');
-    tempList.forEach((element) {
-      final tempData = json.decode(element);
-      _reminderList.add({
-        'text': tempData['text'],
-        'time': tempData['time'],
-        'date': tempData['date'],
+    if (_reminderList.isEmpty) {
+      final prefs = await SharedPreferences.getInstance();
+      List<String> tempList = prefs.getStringList('reminderList');
+      tempList.forEach((element) {
+        final tempData = json.decode(element);
+        _reminderList.add({
+          'text': tempData['text'],
+          'time': tempData['time'],
+          'date': tempData['date'],
+        });
       });
-    });
-    notifyListeners();
+      notifyListeners();
+    }
   }
 
   void removeListFromMemory() async {

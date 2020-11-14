@@ -58,7 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-              icon: Icon(Icons.delete_forever),
+              icon: Icon(
+                Icons.delete_forever,
+              ),
+              disabledColor: Colors.white.withOpacity(0.4),
               onPressed: _toDoList.isEmpty
                   ? null
                   : () {

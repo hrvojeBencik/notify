@@ -113,7 +113,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
               child: Container(
                 width: size.width,
                 color: Theme.of(context).canvasColor,
-                padding: EdgeInsets.all(24),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -191,6 +194,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             ),
                             onPressed: () {
                               if (_reminderController.text.isNotEmpty) {
+                                if (selectedTime == null) {
+                                  selectedTime = TimeOfDay(hour: 0, minute: 0);
+                                }
                                 _reminderProvider.addReminder(
                                   _reminderController.text,
                                   _selectedDate,
