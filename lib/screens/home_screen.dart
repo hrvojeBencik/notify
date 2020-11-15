@@ -1,123 +1,103 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shopping_list/models/todo_list_model.dart';
-import 'package:shopping_list/widgets/add_item.dart';
-import 'package:shopping_list/widgets/custom_drawer.dart';
-import 'package:shopping_list/widgets/todo_list_tile.dart';
+import 'package:shopping_list/screens/calendar_screen.dart';
+import 'package:shopping_list/screens/notes_screen.dart';
+import 'package:shopping_list/screens/shopping_list_screen.dart';
+import 'package:shopping_list/screens/todo_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const routeName = '/home';
+  static const routeName = '/';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var _toDoListProvider;
-  List<Map<String, dynamic>> _toDoList;
-
-  TextEditingController _itemController = TextEditingController();
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    checkForSavedToDoList();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _itemController.clear();
-    _itemController.dispose();
-  }
-
-  void checkForSavedToDoList() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.getStringList('toDoList') != null &&
-        prefs.getStringList('toDoList').isNotEmpty) {
-      await _toDoListProvider.fetchList();
-    }
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
+  Size size;
   @override
   Widget build(BuildContext context) {
-    _toDoListProvider = Provider.of<ToDoList>(context, listen: true);
-    _toDoList = _toDoListProvider.todoList;
+    size = MediaQuery.of(context).size;
     return Scaffold(
-      drawer: CustomDrawer(),
-      appBar: AppBar(
-        title: Text(
-          "To-Do",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "All In One",
+            style: TextStyle(
+              fontSize: 60,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).primaryColor,
+            ),
           ),
-        ),
-        actions: [
-          IconButton(
-              icon: Icon(
-                Icons.delete_forever,
+          SizedBox(
+            height: 100,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildGridTile(Icons.check, 'To-Do\nList', ToDoScreen.routeName),
+              SizedBox(
+                width: 10,
               ),
-              disabledColor: Colors.white.withOpacity(0.4),
-              onPressed: _toDoList.isEmpty
-                  ? null
-                  : () {
-                      _toDoListProvider.removeAllToDoItems();
-                      _toDoListProvider.removeListFromMemory();
-                    }),
+              _buildGridTile(Icons.local_grocery_store, 'Shopping\nList',
+                  ShoppingListScreen.routeName),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildGridTile(Icons.notes, 'Notes', NotesScreen.routeName),
+              SizedBox(
+                width: 10,
+              ),
+              _buildGridTile(
+                  Icons.calendar_today, 'Calendar', CalendarScreen.routeName),
+            ],
+          ),
         ],
       ),
-      body: SafeArea(
-        child: _isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Stack(
-                children: [
-                  _toDoList.isEmpty
-                      ? Center(
-                          child: Text(
-                            "To-Do List is Empty",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.only(
-                            top: 10,
-                            right: 10,
-                            left: 10,
-                          ),
-                          child: ListView.builder(
-                              itemCount: _toDoList.length,
-                              itemBuilder: (context, i) {
-                                return ToDoListTile(_toDoList[i]['text'],
-                                    _toDoList[i]['isDone'], i);
-                              }),
-                        ),
-                  AddItem(
-                    HomeScreen.routeName,
-                    (_itemController) {
-                      if (_itemController.text.isNotEmpty) {
-                        _toDoListProvider.addToDoItem(_itemController.text);
-                        _toDoListProvider.saveToDoList();
-                        setState(
-                          () {
-                            _itemController.clear();
-                          },
-                        );
-                      }
-                    },
-                  )
-                ],
+    );
+  }
+
+  Widget _buildGridTile(IconData icon, String text, String routeName) {
+    return Container(
+      width: 160,
+      height: 160,
+      child: RawMaterialButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        fillColor: Colors.white,
+        splashColor: Theme.of(context).accentColor,
+        elevation: 10,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 50,
+              color: Theme.of(context).primaryColor,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
               ),
+            ),
+          ],
+        ),
+        onPressed: () {
+          Navigator.of(context).pushReplacementNamed(routeName);
+        },
       ),
     );
   }

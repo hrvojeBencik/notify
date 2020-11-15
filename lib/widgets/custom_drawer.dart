@@ -3,8 +3,30 @@ import 'package:shopping_list/screens/calendar_screen.dart';
 import 'package:shopping_list/screens/home_screen.dart';
 import 'package:shopping_list/screens/notes_screen.dart';
 import 'package:shopping_list/screens/shopping_list_screen.dart';
+import 'package:shopping_list/screens/todo_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
+  Widget _buildDrawerTile(
+      BuildContext context, Icon icon, String text, String routeName) {
+    return Column(
+      children: [
+        ListTile(
+          leading: icon,
+          title: Text(
+            text,
+            style: TextStyle(
+              fontSize: 14,
+            ),
+          ),
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed(routeName);
+          },
+        ),
+        Divider(),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -29,72 +51,16 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           Divider(),
-          ListTile(
-            leading: Icon(
-              Icons.check,
-              size: 28,
-            ),
-            title: Text(
-              "To-Do List",
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(
-              Icons.local_grocery_store,
-              size: 28,
-            ),
-            title: Text(
-              "Shopping List",
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(ShoppingListScreen.routeName);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(
-              Icons.notes,
-              size: 28,
-            ),
-            title: Text(
-              "Notes",
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed(NotesScreen.routeName);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(
-              Icons.calendar_today,
-              size: 28,
-            ),
-            title: Text(
-              "Calendar",
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(CalendarScreen.routeName);
-            },
-          ),
-          Divider(),
+          _buildDrawerTile(
+              context, Icon(Icons.home), 'Home', HomeScreen.routeName),
+          _buildDrawerTile(
+              context, Icon(Icons.check), 'To-Do List', ToDoScreen.routeName),
+          _buildDrawerTile(context, Icon(Icons.local_grocery_store),
+              'Shopping List', ShoppingListScreen.routeName),
+          _buildDrawerTile(
+              context, Icon(Icons.notes), 'Notes', NotesScreen.routeName),
+          _buildDrawerTile(context, Icon(Icons.calendar_today), 'Calendar',
+              CalendarScreen.routeName),
         ],
       ),
     );

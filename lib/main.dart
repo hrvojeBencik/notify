@@ -6,6 +6,7 @@ import 'package:shopping_list/models/todo_list_model.dart';
 import 'package:shopping_list/screens/calendar_screen.dart';
 import 'package:shopping_list/screens/notes_screen.dart';
 import 'package:shopping_list/screens/shopping_list_screen.dart';
+import 'package:shopping_list/screens/todo_screen.dart';
 
 import 'screens/home_screen.dart';
 
@@ -32,9 +33,10 @@ class ShoppingApp extends StatelessWidget {
           primaryColor: Color(0xFF001026),
           accentColor: Color(0xFF00D39B),
         ),
-        initialRoute: '/home',
+        initialRoute: '/',
         routes: {
           HomeScreen.routeName: (ctx) => HomeScreen(),
+          ToDoScreen.routeName: (ctx) => ToDoScreen(),
           ShoppingListScreen.routeName: (ctx) => ShoppingListScreen(),
           CalendarScreen.routeName: (ctx) => CalendarScreen(),
           NotesScreen.routeName: (ctx) => NotesScreen(),
