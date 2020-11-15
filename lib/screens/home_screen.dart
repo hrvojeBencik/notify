@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         onPressed: () {
-          Navigator.of(context).pushReplacementNamed(routeName);
+          Navigator.of(context).pushNamed(routeName);
         },
       ),
     );

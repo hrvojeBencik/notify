@@ -19,7 +19,12 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           onTap: () {
-            Navigator.of(context).pushReplacementNamed(routeName);
+            if (routeName == HomeScreen.routeName) {
+              Navigator.of(context)
+                  .popUntil(ModalRoute.withName(HomeScreen.routeName));
+            } else {
+              Navigator.of(context).pushReplacementNamed(routeName);
+            }
           },
         ),
         Divider(),
