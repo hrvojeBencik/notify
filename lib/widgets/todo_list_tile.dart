@@ -25,7 +25,7 @@ class _ToDoListTileState extends State<ToDoListTile> {
 
   @override
   Widget build(BuildContext context) {
-    _formattedText = (widget.index + 1).toString() + ". " + widget.text;
+    _formattedText = "- " + widget.text;
     return Dismissible(
       key: UniqueKey(),
       direction: DismissDirection.endToStart,
