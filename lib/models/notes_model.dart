@@ -18,6 +18,14 @@ class Notes with ChangeNotifier {
     notifyListeners();
   }
 
+  void updateNote(int index, String title, String note) {
+    _notes[index] = {
+      'title': title,
+      'note': note,
+    };
+    notifyListeners();
+  }
+
   void removeNote(int index) {
     _notes.removeAt(index);
     notifyListeners();

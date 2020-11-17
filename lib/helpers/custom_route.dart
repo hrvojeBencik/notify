@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list/screens/add_note_screen.dart';
 
 class CustomRoute {
-  static Route scaleFadeTransition() {
+  static Route scaleFadeTransition(var screen) {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => AddNoteScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) => screen,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var curve = Curves.fastOutSlowIn;
         var curveTween = CurveTween(curve: curve);

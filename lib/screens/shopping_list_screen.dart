@@ -15,8 +15,7 @@ class ShoppingListScreen extends StatefulWidget {
 class _ShoppingListScreenState extends State<ShoppingListScreen> {
   Size size;
   TextEditingController _itemController = TextEditingController();
-  var shoppingListProvider;
-  List<String> list;
+  var _shoppingListProvider;
 
   bool _isLoading = true;
 
@@ -36,7 +35,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getStringList('shoppingList') != null &&
         prefs.getStringList('shoppingList').isNotEmpty) {
-      await shoppingListProvider.fetchList();
+      await _shoppingListProvider.fetchList();
     }
     setState(() {
       _isLoading = false;
@@ -46,77 +45,86 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
-    shoppingListProvider = Provider.of<ShoppingList>(context, listen: true);
-    list = shoppingListProvider.list;
-    return Scaffold(
-      drawer: CustomDrawer(),
-      appBar: AppBar(
-        title: Text(
-          "Shopping List",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: shoppingListProvider.list.isEmpty
-                ? null
-                : () {
-                    shoppingListProvider.removeAllItems();
-                    shoppingListProvider.removeListFromMemory();
-                    shoppingListProvider.saveList();
-                  },
-            disabledColor: Colors.white.withOpacity(0.4),
-            icon: Icon(
-              Icons.delete_forever,
-            ),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: _isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Container(
-                width: size.width,
-                height: size.height,
-                child: Stack(
-                  children: [
-                    list.isEmpty
-                        ? Center(
-                            child: Text(
-                              "Shopping List is Empty.",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Theme.of(context)
-                                    .primaryColor
-                                    .withOpacity(0.8),
-                              ),
-                            ),
-                          )
-                        : ListView.builder(
-                            itemCount: list.length,
-                            itemBuilder: (context, index) {
-                              return CustomListTile(list[index], index);
-                            },
-                          ),
-                    // _addItem(),
-                    AddItem(ShoppingListScreen.routeName, (_itemController) {
-                      if (_itemController.text.isNotEmpty) {
-                        setState(
-                          () {
-                            shoppingListProvider.addItem(_itemController.text);
-                            shoppingListProvider.saveList();
+    return ChangeNotifierProvider<ShoppingList>(
+      create: (context) => ShoppingList(),
+      child: Consumer<ShoppingList>(
+        builder: (context, provider, _) {
+          _shoppingListProvider = provider;
 
-                            _itemController.clear();
-                          },
-                        );
-                      }
-                    })
-                  ],
+          return Scaffold(
+            drawer: CustomDrawer(),
+            appBar: AppBar(
+              title: Text(
+                "Shopping List",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
               ),
+              actions: [
+                IconButton(
+                  onPressed: provider.list.isEmpty
+                      ? null
+                      : () {
+                          provider.removeAllItems();
+                          provider.removeListFromMemory();
+                          provider.saveList();
+                        },
+                  disabledColor: Colors.white.withOpacity(0.4),
+                  icon: Icon(
+                    Icons.delete_forever,
+                  ),
+                ),
+              ],
+            ),
+            body: SafeArea(
+              child: _isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Container(
+                      width: size.width,
+                      height: size.height,
+                      child: Stack(
+                        children: [
+                          provider.list.isEmpty
+                              ? Center(
+                                  child: Text(
+                                    "Shopping List is Empty.",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Theme.of(context)
+                                          .primaryColor
+                                          .withOpacity(0.8),
+                                    ),
+                                  ),
+                                )
+                              : ListView.builder(
+                                  itemCount: provider.list.length,
+                                  itemBuilder: (context, index) {
+                                    return CustomListTile(
+                                        provider.list[index], index);
+                                  },
+                                ),
+                          // _addItem(),
+                          AddItem(ShoppingListScreen.routeName,
+                              (_itemController) {
+                            if (_itemController.text.isNotEmpty) {
+                              setState(
+                                () {
+                                  provider.addItem(_itemController.text);
+                                  provider.saveList();
+
+                                  _itemController.clear();
+                                },
+                              );
+                            }
+                          })
+                        ],
+                      ),
+                    ),
+            ),
+          );
+        },
       ),
     );
   }

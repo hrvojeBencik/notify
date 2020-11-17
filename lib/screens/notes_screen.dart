@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopping_list/helpers/custom_route.dart';
 import 'package:shopping_list/models/notes_model.dart';
+import 'package:shopping_list/screens/add_note_screen.dart';
 import 'package:shopping_list/widgets/add_note_button.dart';
 import 'package:shopping_list/widgets/custom_drawer.dart';
 import 'package:shopping_list/widgets/note_tile.dart';
@@ -49,7 +50,8 @@ class _NotesScreenState extends State<NotesScreen> {
       floatingActionButton: _notes.isNotEmpty
           ? FloatingActionButton(
               onPressed: () {
-                Navigator.of(context).push(CustomRoute.scaleFadeTransition());
+                Navigator.of(context)
+                    .push(CustomRoute.scaleFadeTransition(AddNoteScreen()));
               },
               backgroundColor: Theme.of(context).accentColor,
               child: Icon(

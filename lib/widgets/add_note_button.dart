@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list/helpers/custom_route.dart';
+import 'package:shopping_list/screens/add_note_screen.dart';
 
 class AddNoteButton extends StatefulWidget {
   @override
@@ -27,7 +28,8 @@ class _AddNoteButtonState extends State<AddNoteButton> {
           color: Theme.of(context).primaryColor,
         ),
         onPressed: () {
-          Navigator.of(context).push(CustomRoute.scaleFadeTransition());
+          Navigator.of(context)
+              .push(CustomRoute.scaleFadeTransition(AddNoteScreen()));
         },
       ),
     );
