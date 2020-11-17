@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopping_list/helpers/custom_route.dart';
 import 'package:shopping_list/models/notes_model.dart';
 import 'package:shopping_list/screens/add_note_screen.dart';
-import 'package:shopping_list/widgets/add_note_button.dart';
 import 'package:shopping_list/widgets/custom_drawer.dart';
 import 'package:shopping_list/widgets/note_tile.dart';
 
@@ -47,37 +46,41 @@ class _NotesScreenState extends State<NotesScreen> {
           ),
         ),
       ),
-      floatingActionButton: _notes.isNotEmpty
-          ? FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .push(CustomRoute.scaleFadeTransition(AddNoteScreen()));
-              },
-              backgroundColor: Theme.of(context).accentColor,
-              child: Icon(
-                Icons.add,
-                color: Colors.black,
-                size: 32,
-              ),
-            )
-          : null,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context)
+              .push(CustomRoute.scaleFadeTransition(AddNoteScreen()));
+        },
+        backgroundColor: Theme.of(context).accentColor,
+        child: Icon(
+          Icons.add,
+          color: Colors.black,
+          size: 32,
+        ),
+      ),
       body: _notes.isEmpty
           ? Center(
               child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Notes are empty",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Theme.of(context).primaryColor.withOpacity(
-                          0.8,
-                        ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/notes-empty.png',
+                    width: 96,
+                    height: 96,
                   ),
-                ),
-                AddNoteButton(),
-              ],
-            ))
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "You don't have any notes",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF999FA8),
+                    ),
+                  ),
+                ],
+              ),
+            )
           : StaggeredGridView.countBuilder(
               padding: EdgeInsets.all(20),
               crossAxisCount: 4,

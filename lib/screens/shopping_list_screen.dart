@@ -88,14 +88,25 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                         children: [
                           provider.list.isEmpty
                               ? Center(
-                                  child: Text(
-                                    "Shopping List is Empty.",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Theme.of(context)
-                                          .primaryColor
-                                          .withOpacity(0.8),
-                                    ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/shopping-empty.png',
+                                        width: 96,
+                                        height: 96,
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        "Your shopping list is empty",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xFF999FA8),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 )
                               : ListView.builder(

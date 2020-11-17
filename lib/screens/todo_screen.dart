@@ -80,14 +80,25 @@ class _ToDoScreenState extends State<ToDoScreen> {
                       children: [
                         provider.todoList.isEmpty
                             ? Center(
-                                child: Text(
-                                  "To-Do List is Empty",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Theme.of(context)
-                                        .primaryColor
-                                        .withOpacity(0.8),
-                                  ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/todo-empty.png',
+                                      width: 96,
+                                      height: 96,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "You don't have any tasks",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: Color(0xFF999FA8),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               )
                             : Padding(

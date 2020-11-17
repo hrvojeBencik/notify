@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_list/models/notes_model.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class AddNoteScreen extends StatefulWidget {
   final String title;
@@ -34,7 +34,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
       _contentController.text = widget.note;
     }
 
-    KeyboardVisibilityNotification().addNewListener(onChange: (bool visible) {
+    KeyboardVisibility.onChange.listen((bool visible) {
       if (!visible) {
         FocusScope.of(context).unfocus();
       }
@@ -52,7 +52,6 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
   Widget build(BuildContext context) {
     _notesProvider = Provider.of<Notes>(context, listen: false);
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         title: Text(widget.isChanging ? "Change note" : "Add note"),
@@ -100,6 +99,29 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
           ],
         ),
       ),
+      floatingActionButton: !widget.isChanging
+          ? FloatingActionButton(
+              elevation: 0,
+              highlightElevation: 0,
+              onPressed: _contentController.text.trim().isNotEmpty
+                  ? () {
+                      String _title = _titleController.text.isEmpty
+                          ? '/'
+                          : _titleController.text;
+                      String _note = _contentController.text;
+                      _notesProvider.addNote(_title, _note);
+                      _notesProvider.saveNotes();
+                      Navigator.of(context).pop();
+                    }
+                  : null,
+              child: Icon(
+                Icons.save,
+                color: _contentController.text.trim().isNotEmpty
+                    ? Colors.black87
+                    : Colors.black45,
+              ),
+            )
+          : Container(),
     );
   }
 
@@ -134,9 +156,10 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
     return TextField(
       controller: _contentController,
       textCapitalization: TextCapitalization.sentences,
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
       autocorrect: false,
       enableSuggestions: false,
-      maxLines: 20,
       style: TextStyle(
         color: Colors.white,
       ),
@@ -155,9 +178,6 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
       ),
       onChanged: (value) {
         setState(() {});
-      },
-      onEditingComplete: () {
-        print('editing completed');
       },
     );
   }

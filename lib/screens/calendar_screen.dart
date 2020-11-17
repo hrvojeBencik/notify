@@ -86,14 +86,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           )
                         : Padding(
                             padding: const EdgeInsets.only(top: 20),
-                            child: Text(
-                              "You don't have any reminders",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Theme.of(context)
-                                    .primaryColor
-                                    .withOpacity(0.8),
-                              ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/calendar-empty.png',
+                                  width: 36,
+                                  height: 36,
+                                ),
+                                Text(
+                                  "  You don't have any reminders",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Color(0xFF999FA8),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
               ],
