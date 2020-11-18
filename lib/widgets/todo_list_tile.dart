@@ -55,6 +55,7 @@ class _ToDoListTileState extends State<ToDoListTile> {
             decoration: checkBoxValue ? TextDecoration.lineThrough : null,
             color: checkBoxValue ? Colors.grey : Colors.black,
             fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
         ),
         trailing: Transform.scale(

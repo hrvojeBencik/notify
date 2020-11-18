@@ -51,6 +51,7 @@ class CustomListTile extends StatelessWidget {
             (index + 1).toString() + '. ' + title,
             style: TextStyle(
               fontSize: 20,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),

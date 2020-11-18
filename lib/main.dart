@@ -28,6 +28,7 @@ class ShoppingApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Color(0xFF001026),
           accentColor: Color(0xFF00D39B),
+          fontFamily: 'OpenSans',
         ),
         initialRoute: '/',
         routes: {

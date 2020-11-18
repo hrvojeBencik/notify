@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_list/screens/calendar_screen.dart';
 import 'package:shopping_list/screens/notes_screen.dart';
@@ -16,87 +17,119 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "All In One",
-            style: TextStyle(
-              fontSize: 60,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).primaryColor,
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 60,
             ),
-          ),
-          SizedBox(
-            height: 100,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildGridTile(Icons.notes, 'Notes', NotesScreen.routeName),
-              SizedBox(
-                width: 10,
+            Image.asset(
+              'assets/images/logo.png',
+              width: 128,
+              height: 128,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Text(
+              "Notify",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+                fontSize: 82,
+                color: Theme.of(context).accentColor,
               ),
-              _buildGridTile(
-                  Icons.calendar_today, 'Calendar', CalendarScreen.routeName),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildGridTile(Icons.check, 'To-Do\nList', ToDoScreen.routeName),
-              SizedBox(
-                width: 10,
-              ),
-              _buildGridTile(Icons.local_grocery_store, 'Shopping\nList',
-                  ShoppingListScreen.routeName),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            _buildGridTile(Icons.notes, 'Notes', NotesScreen.routeName),
+            SizedBox(
+              height: 12,
+            ),
+            _buildGridTile(
+                Icons.calendar_today, 'Calendar', CalendarScreen.routeName),
+            SizedBox(
+              height: 12,
+            ),
+            _buildGridTile(Icons.check, 'To-Do List', ToDoScreen.routeName),
+            SizedBox(
+              height: 12,
+            ),
+            _buildGridTile(Icons.local_grocery_store, 'Shopping List',
+                ShoppingListScreen.routeName),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildGridTile(IconData icon, String text, String routeName) {
     return Container(
-      width: 160,
-      height: 160,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      width: MediaQuery.of(context).size.width,
+      height: 60,
       child: RawMaterialButton(
+        padding: EdgeInsets.symmetric(
+          horizontal: 20,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         fillColor: Colors.white,
         splashColor: Theme.of(context).accentColor,
         elevation: 10,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Row(
           children: [
             Icon(
               icon,
-              size: 50,
+              size: 32,
               color: Theme.of(context).primaryColor,
             ),
             SizedBox(
-              height: 10,
+              width: 10,
             ),
             Text(
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 24,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 color: Theme.of(context).primaryColor,
               ),
             ),
+            Spacer(),
+            Icon(
+              Icons.arrow_forward,
+              size: 32,
+              color: Theme.of(context).accentColor,
+            )
           ],
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(routeName);
+          var screen;
+          switch (routeName) {
+            case NotesScreen.routeName:
+              screen = NotesScreen();
+              break;
+            case CalendarScreen.routeName:
+              screen = CalendarScreen();
+              break;
+            case ToDoScreen.routeName:
+              screen = ToDoScreen();
+              break;
+            case ShoppingListScreen.routeName:
+              screen = ShoppingListScreen();
+              break;
+          }
+          Navigator.of(context).push(CupertinoPageRoute(
+            builder: (context) => screen,
+          ));
         },
       ),
     );
