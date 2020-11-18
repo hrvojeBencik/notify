@@ -185,9 +185,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             borderRadius: BorderRadius.circular(25),
                           ),
                           child: IconButton(
+                            iconSize: 30,
                             icon: Icon(
                               Icons.add,
-                              size: 30,
                               color: Colors.white,
                             ),
                             onPressed: () {

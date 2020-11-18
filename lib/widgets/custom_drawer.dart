@@ -59,13 +59,13 @@ class CustomDrawer extends StatelessWidget {
           _buildDrawerTile(
               context, Icon(Icons.home), 'Home', HomeScreen.routeName),
           _buildDrawerTile(
-              context, Icon(Icons.check), 'To-Do List', ToDoScreen.routeName),
-          _buildDrawerTile(context, Icon(Icons.local_grocery_store),
-              'Shopping List', ShoppingListScreen.routeName),
-          _buildDrawerTile(
               context, Icon(Icons.notes), 'Notes', NotesScreen.routeName),
           _buildDrawerTile(context, Icon(Icons.calendar_today), 'Calendar',
               CalendarScreen.routeName),
+          _buildDrawerTile(
+              context, Icon(Icons.check), 'To-Do List', ToDoScreen.routeName),
+          _buildDrawerTile(context, Icon(Icons.local_grocery_store),
+              'Shopping List', ShoppingListScreen.routeName),
         ],
       ),
     );

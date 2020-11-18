@@ -42,6 +42,11 @@ class _ReminderTileState extends State<ReminderTile> {
           ),
         ),
         child: ListTile(
+          leading: Icon(
+            Icons.event,
+            size: 40,
+            color: Theme.of(context).accentColor,
+          ),
           title: Text(
             widget.text,
             style: TextStyle(

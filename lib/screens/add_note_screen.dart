@@ -159,6 +159,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
       keyboardType: TextInputType.multiline,
       maxLines: null,
       autocorrect: false,
+      autofocus: true,
       enableSuggestions: false,
       style: TextStyle(
         color: Colors.white,

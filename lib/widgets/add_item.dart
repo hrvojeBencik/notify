@@ -59,10 +59,10 @@ class _AddItemState extends State<AddItem> {
               ),
             ),
             Container(
-              width: 50,
-              height: 50,
+              width: 55,
+              height: 55,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(30),
                 color: Theme.of(context).primaryColor,
               ),
               child: IconButton(

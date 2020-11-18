@@ -34,12 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildGridTile(Icons.check, 'To-Do\nList', ToDoScreen.routeName),
+              _buildGridTile(Icons.notes, 'Notes', NotesScreen.routeName),
               SizedBox(
                 width: 10,
               ),
-              _buildGridTile(Icons.local_grocery_store, 'Shopping\nList',
-                  ShoppingListScreen.routeName),
+              _buildGridTile(
+                  Icons.calendar_today, 'Calendar', CalendarScreen.routeName),
             ],
           ),
           SizedBox(
@@ -48,12 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildGridTile(Icons.notes, 'Notes', NotesScreen.routeName),
+              _buildGridTile(Icons.check, 'To-Do\nList', ToDoScreen.routeName),
               SizedBox(
                 width: 10,
               ),
-              _buildGridTile(
-                  Icons.calendar_today, 'Calendar', CalendarScreen.routeName),
+              _buildGridTile(Icons.local_grocery_store, 'Shopping\nList',
+                  ShoppingListScreen.routeName),
             ],
           ),
         ],
