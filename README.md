@@ -1,15 +1,14 @@
-# All In One App
+# Notify
 
-I made this mobile application using Flutter. Yhe app will probably not be uploaded to the PlayStore and the AppStore, so I will use it for my needs only.
-It is called All In One because it contains To-Do list, Shopping list and Calendar with reminder, basically every feature I need in day to day use.
+Notify is the mobile application for everyday use. It is note taking app with some other functionalities, such as calendar with reminder, separated to-do list and shopping list for easier navigation and organization(I found it useful for me in everyday use). The app is different from other note taking applications with its simplicity and it is very lightweight and fast. The data is stored on the device only, so no interent connection is needed and also your data is private. 
 
 ## Technology
 
-For this project I used Flutter. For state management I used Provider package and for offline storage I used shared_preferences. I used SQLite at the beggining of the development, but I realised there is no need for it and switched to shared_prefreneces.
+Project is made using Flutter. For state management I used Provider package and shared_preferences for offline storage. I used SQLite at the beggining of the development, but after realising there is no need for it I switched to shared_prefreneces.
 
 ### Plans for the future
 
-For the future I have few ideas and features that I would like to add. Also icon and splash screen will be set.
+In the future there is a plan for online backup of the data, so user can have data on other devices as well. Second idea is the way of monetizing the app, it will probably be trough optional donations.
 
 ### Screenshots
 #### To-Do List - Screen
