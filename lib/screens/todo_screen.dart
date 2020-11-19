@@ -59,6 +59,12 @@ class _ToDoScreenState extends State<ToDoScreen> {
               ),
               actions: [
                 IconButton(
+                  icon: Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                IconButton(
                     icon: Icon(
                       Icons.delete_forever,
                     ),

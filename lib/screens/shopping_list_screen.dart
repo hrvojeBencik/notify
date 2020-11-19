@@ -62,6 +62,12 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
               ),
               actions: [
                 IconButton(
+                  icon: Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                IconButton(
                   onPressed: provider.list.isEmpty
                       ? null
                       : () {

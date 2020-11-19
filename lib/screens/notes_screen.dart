@@ -45,6 +45,14 @@ class _NotesScreenState extends State<NotesScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

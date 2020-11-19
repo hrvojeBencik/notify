@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list/screens/calendar_screen.dart';
-import 'package:shopping_list/screens/home_screen.dart';
 import 'package:shopping_list/screens/notes_screen.dart';
 import 'package:shopping_list/screens/shopping_list_screen.dart';
 import 'package:shopping_list/screens/todo_screen.dart';
@@ -19,12 +18,7 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           onTap: () {
-            if (routeName == HomeScreen.routeName) {
-              Navigator.of(context)
-                  .popUntil(ModalRoute.withName(HomeScreen.routeName));
-            } else {
-              Navigator.of(context).pushReplacementNamed(routeName);
-            }
+            Navigator.of(context).pushReplacementNamed(routeName);
           },
         ),
         Divider(),
@@ -56,8 +50,6 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           Divider(),
-          _buildDrawerTile(
-              context, Icon(Icons.home), 'Home', HomeScreen.routeName),
           _buildDrawerTile(
               context, Icon(Icons.notes), 'Notes', NotesScreen.routeName),
           _buildDrawerTile(context, Icon(Icons.calendar_today), 'Calendar',

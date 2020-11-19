@@ -53,6 +53,14 @@ class _CalendarScreenState extends State<CalendarScreen> {
       drawer: CustomDrawer(),
       appBar: AppBar(
         title: Text("Calendar"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: Stack(
