@@ -52,7 +52,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
-        title: Text("Calendar"),
+        title: Text(
+          "Calendar",
+          textScaleFactor: 1.25,
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.home),
@@ -108,6 +111,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                     fontSize: 18,
                                     color: Color(0xFF999FA8),
                                   ),
+                                  textScaleFactor: 1.25,
                                 ),
                               ],
                             ),
@@ -134,6 +138,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           style: TextStyle(
                             fontSize: 30,
                           ),
+                          textScaleFactor: 1.25,
                         ),
                         GestureDetector(
                           onTap: () async {
@@ -152,6 +157,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             style: TextStyle(
                               fontSize: 30,
                             ),
+                            textScaleFactor: 1.25,
                           ),
                         ),
                       ],
@@ -170,18 +176,19 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             ),
                             cursorColor: Theme.of(context).primaryColor,
                             decoration: InputDecoration(
-                                labelText: 'Add reminder',
-                                labelStyle: TextStyle(
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withOpacity(0.7),
+                              labelText: 'Add reminder',
+                              labelStyle: TextStyle(
+                                color: Theme.of(context)
+                                    .primaryColor
+                                    .withOpacity(0.7),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2,
                                 ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Theme.of(context).primaryColor,
-                                    width: 2,
-                                  ),
-                                )),
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(width: 20),

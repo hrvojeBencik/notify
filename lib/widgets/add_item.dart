@@ -26,8 +26,9 @@ class _AddItemState extends State<AddItem> {
           left: 30,
           bottom: 20,
         ),
+        color: Theme.of(context).canvasColor,
         width: size.width,
-        height: 80,
+        height: 120,
         child: Row(
           children: [
             Expanded(
@@ -40,6 +41,9 @@ class _AddItemState extends State<AddItem> {
                   textCapitalization: TextCapitalization.sentences,
                   autocorrect: false,
                   cursorColor: Theme.of(context).primaryColor,
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                   decoration: InputDecoration(
                     labelText: widget.screen == HomeScreen.routeName
                         ? "Add Task"

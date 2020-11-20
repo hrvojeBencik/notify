@@ -56,6 +56,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
+                textScaleFactor: 1.25,
               ),
               actions: [
                 IconButton(
@@ -103,6 +104,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                                         fontSize: 18,
                                         color: Color(0xFF999FA8),
                                       ),
+                                      textScaleFactor: 1.25,
                                     ),
                                   ],
                                 ),

@@ -23,7 +23,11 @@ class NoteTile extends StatelessWidget {
           if (title != '/')
             Text(
               title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textScaleFactor: 1.25,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           Text(
             note,
@@ -31,6 +35,7 @@ class NoteTile extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
             ),
+            textScaleFactor: 1.4,
           ),
         ],
       ),

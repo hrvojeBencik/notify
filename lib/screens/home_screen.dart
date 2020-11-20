@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontSize: 82,
                 color: Theme.of(context).accentColor,
               ),
+              textScaleFactor: 1,
             ),
             SizedBox(
               height: 60,
@@ -102,6 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.w600,
                 color: Theme.of(context).primaryColor,
               ),
+              textScaleFactor: 1,
             ),
             Spacer(),
             Icon(

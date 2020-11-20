@@ -57,6 +57,7 @@ class _ToDoListTileState extends State<ToDoListTile> {
             fontSize: 20,
             fontWeight: FontWeight.w600,
           ),
+          textScaleFactor: 1.25,
         ),
         trailing: Transform.scale(
           scale: 1.4,

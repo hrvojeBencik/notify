@@ -54,7 +54,10 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: Text(widget.isChanging ? "Change note" : "Add note"),
+        title: Text(
+          widget.isChanging ? "Change note" : "Add note",
+          textScaleFactor: 1.25,
+        ),
         elevation: 0,
         actions: [
           if (widget.isChanging)

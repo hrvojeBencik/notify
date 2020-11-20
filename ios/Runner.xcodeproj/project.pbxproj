@@ -355,6 +355,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = W8S6KJRW8C;
 				ENABLE_BITCODE = NO;
 				FLUTTER_APPLICATION_PATH = /Users/hrvojebencik/Documents/Projects/Flutter/shopping_list;
 				FLUTTER_FRAMEWORK_DIR = /Users/hrvojebencik/Flutter/flutter/bin/cache/artifacts/engine/ios;
@@ -497,6 +498,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = W8S6KJRW8C;
 				ENABLE_BITCODE = NO;
 				FLUTTER_APPLICATION_PATH = /Users/hrvojebencik/Documents/Projects/Flutter/shopping_list;
 				FLUTTER_FRAMEWORK_DIR = /Users/hrvojebencik/Flutter/flutter/bin/cache/artifacts/engine/ios;
@@ -533,6 +535,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = W8S6KJRW8C;
 				ENABLE_BITCODE = NO;
 				FLUTTER_APPLICATION_PATH = /Users/hrvojebencik/Documents/Projects/Flutter/shopping_list;
 				FLUTTER_FRAMEWORK_DIR = /Users/hrvojebencik/Flutter/flutter/bin/cache/artifacts/engine/ios;

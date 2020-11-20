@@ -44,6 +44,7 @@ class _NotesScreenState extends State<NotesScreen> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
+          textScaleFactor: 1.25,
         ),
         actions: [
           IconButton(
@@ -85,6 +86,7 @@ class _NotesScreenState extends State<NotesScreen> {
                       fontSize: 18,
                       color: Color(0xFF999FA8),
                     ),
+                    textScaleFactor: 1.25,
                   ),
                 ],
               ),

@@ -54,6 +54,7 @@ class _ReminderTileState extends State<ReminderTile> {
               fontWeight: FontWeight.bold,
               color: Theme.of(context).primaryColor,
             ),
+            textScaleFactor: 1.25,
           ),
           subtitle: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,6 +63,7 @@ class _ReminderTileState extends State<ReminderTile> {
                 DateFormat('dd.MM.yyyy.').format(
                   DateTime.tryParse(widget.date),
                 ),
+                textScaleFactor: 1.40,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -75,6 +77,7 @@ class _ReminderTileState extends State<ReminderTile> {
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).primaryColor.withOpacity(0.7),
                 ),
+                textScaleFactor: 1.40,
               ),
             ],
           ),

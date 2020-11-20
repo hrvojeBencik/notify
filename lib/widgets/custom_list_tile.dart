@@ -53,6 +53,7 @@ class CustomListTile extends StatelessWidget {
               fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
+            textScaleFactor: 1.25,
           ),
         ),
       ),

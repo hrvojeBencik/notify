@@ -59,6 +59,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
+                textScaleFactor: 1.25,
               ),
               actions: [
                 IconButton(
@@ -111,6 +112,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                                           fontSize: 18,
                                           color: Color(0xFF999FA8),
                                         ),
+                                        textScaleFactor: 1.25,
                                       ),
                                     ],
                                   ),
